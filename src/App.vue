@@ -1,14 +1,13 @@
 <template>
-  <div>黑马头条</div>
+  <div>
+    <!-- 路由入口 -->
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      da: '555'
-    }
-  }
+
 }
 </script>
 
