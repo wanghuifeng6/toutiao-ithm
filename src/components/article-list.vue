@@ -5,7 +5,7 @@
     :success-duration="1500"
     @refresh="onRefresh"
   >
-  <!-- 中间部分 -->
+    <!-- 中间部分 -->
     <div class="article-list">
       <van-list
         v-model="loading"
@@ -21,7 +21,12 @@
           :title="article.title"
         /> -->
         <div class="list">
-          <div class="article_item" v-for="(item, index) in list" :key="index">
+          <div
+            class="article_item"
+            v-for="(item, index) in list"
+            :key="index"
+            @click="DetailsOfJumpingArticles(item.art_id)"
+          >
             <p class="van-ellipsis">{{ item.title }}</p>
             <div class="img_box" v-if="item.cover.type === 1">
               <img :src="item.cover.images" class="w100" />
@@ -35,7 +40,7 @@
               <span>{{ item.aut_name }}</span>
               <span>{{ item.comm_count }}评论</span>
               <!-- 使用定义好的过滤器来过滤时间 -->
-              <span>{{ item.pubdate | relativeTime}}</span>
+              <span>{{ item.pubdate | relativeTime }}</span>
             </div>
           </div>
         </div>
@@ -117,6 +122,12 @@ export default {
         this.isRefreshLoading = false // 关闭下拉刷新的 loading 状态
         this.$toast('刷新失败')
       }
+    },
+    DetailsOfJumpingArticles (val) {
+      this.$router.push({
+        name: 'articleDetails',
+        params: { articleId: val }
+      })
     }
   }
 }
@@ -133,7 +144,7 @@ export default {
   height: 150px !important;
 }
 // 下拉缓存
-.article-list{
+.article-list {
   // 高度为79vh
   height: 79vh;
   // 添加滚动条

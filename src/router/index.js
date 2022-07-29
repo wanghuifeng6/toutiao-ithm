@@ -17,13 +17,27 @@ const router = new Router({
       component: () => import('@/views/layout/layout.vue'),
       redirect: '/home',
       children: [
-        { path: '/home', component: () => import('@/views/home/index.vue'), name: 'home' },
+        {
+          path: '/home',
+          component: () => import('@/views/home/index.vue'),
+          name: 'home'
+        },
         { path: '/wd', component: () => import('@/views/wd/index.vue') },
         { path: '/vidio', component: () => import('@/views/vidio/index.vue') },
         { path: '/my', component: () => import('@/views/my/idnex.vue') }
       ]
     },
-    { path: '/search', component: () => import('@/views/Search/index.vue'), name: 'search' },
+    {
+      path: '/search',
+      component: () => import('@/views/Search/index.vue'),
+      name: 'search'
+    },
+    {
+      path: '/articleDetails/:articleId',
+      component: () => import('@/components/ArticleDetails.vue'),
+      name: 'articleDetails',
+      props: true
+    },
     { path: '*', component: () => import('@/components/Mistake.vue') }
   ]
 })

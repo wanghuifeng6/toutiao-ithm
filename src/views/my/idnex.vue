@@ -30,7 +30,7 @@
             <span class="text">头条</span>
           </div>
           <div class="data-item">
-            <span class="count">5</span>
+            <span class="count">{{UserSOwnData.follow_count}}</span>
             <span class="text">关注</span>
           </div>
           <div class="data-item">
